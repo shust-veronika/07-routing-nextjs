@@ -4,10 +4,10 @@ type Props = {
   notes: Note;
 };
 
-export default function NotePreview({ note }: Props) {
+export default function NoteDetails({ note }: Props) {
   return (
     <div>
-      <h2>{note.title}</h2>
+      <h1>{note.title}</h1>
       <p>{note.content}</p>
     </div>
   );
