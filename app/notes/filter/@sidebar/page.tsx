@@ -1,5 +1,5 @@
 import Link from "next/link";
-import css from "./page.module.css";
+import css from "./Sidebar.module.css";
 
 const TAGS = ["Work", "Personal", "Education", "Health", "Leisure"];
 

@@ -1,5 +1,5 @@
 import { fetchNotes } from "@/lib/api/notes";
-import css from "./page.module.css";
+import css from "./NotesPage.module.css";
 
 interface NotesPageProps {
   params: Promise<{
