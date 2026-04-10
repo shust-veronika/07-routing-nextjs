@@ -1,6 +1,8 @@
 import { fetchNotes } from "@/lib/api/notes";
 import css from "./NotesPage.module.css";
 
+export const dynamic = 'force-dynamic';
+
 interface NotesPageProps {
   params: Promise<{
     tag?: string[];
