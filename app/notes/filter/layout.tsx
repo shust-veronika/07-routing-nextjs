@@ -1,21 +1,16 @@
-import React from "react";
-
-interface FilterLayoutProps {
-  children: React.ReactNode;
-  sidebar: React.ReactNode;
-  notes: React.ReactNode;
-}
-
 export default function FilterLayout({
   children,
-  sidebar,
   notes,
-}: FilterLayoutProps) {
+  sidebar,
+}: {
+  children: React.ReactNode;
+  notes: React.ReactNode;
+  sidebar: React.ReactNode;
+}) {
   return (
     <div style={{ display: "flex" }}>
-      {children}
-      {sidebar}
-      {notes}
+      <aside>{sidebar}</aside>
+      <main>{notes}</main>
     </div>
   );
 }
