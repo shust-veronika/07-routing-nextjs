@@ -1,5 +1,5 @@
 import { fetchNoteById } from "@/lib/api";
-import NoteDetails from "@/app/notes/[id]/NoteDetails";
+import NoteDetails from "@/app/notes/[id]/NoteDetails.client";
 
 type Props = {
   params: { id: string };
