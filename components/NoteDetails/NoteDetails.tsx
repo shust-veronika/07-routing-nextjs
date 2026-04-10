@@ -1,7 +1,7 @@
 import { Note } from "@/types/note";
 
 type Props = {
-  notes: Note;
+  note: Note;
 };
 
 export default function NoteDetails({ note }: Props) {
