@@ -1,18 +1,17 @@
-import { getNotes } from "@/lib/api/notes";
-import css from "./NotesList.module.css";
+import { fetchNotes } from "@/lib/api/notes";
+import css from "./page.module.css";
 
 interface NotesPageProps {
-  params: {
+  params: Promise<{
     tag?: string[];
-  };
+  }>;
 }
 
 export default async function NotesPage({ params }: NotesPageProps) {
-  const resolvedParams = await params;
-  const tag = resolvedParams.tag?.[0];
-  const filterTag = tag === "all" ? undefined : tag;
+  const { tag } = await params;
+  const filterTag = tag?.[0] === "all" ? undefined : tag?.[0];
 
-  const notes = await getNotes(filterTag);
+  const notes = await fetchNotes(filterTag);
 
   return (
     <div className={css.container}>
