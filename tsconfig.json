@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/notes/filter/@sidebar/default.js", "app/notes/filter/@notes/default.tsx"  ],
+, "notes/filter/@sidebar/default.js", "notes/filter/@notes/default.tsx"  ],
   "exclude": ["node_modules"]
 }
