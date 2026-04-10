@@ -2,21 +2,12 @@ import axios from "axios";
 
 const BASE_URL = "https://notehub-public.goit.study/api";
 
-export async function fetchNotes(tag?: string) {
-  const params: Record<string, string> = {};
-
-  if (tag && tag !== "all") {
-    params.tag = tag;
-  }
-
-  const response = await axios.get(`${BASE_URL}/notes`, {
-    params,
+export async function fetchNotes() {
+  const res = await axios.get(`${BASE_URL}/notes`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
   });
 
-  return response.data.notes;
-}
-
-export async function fetchNoteById(id: string) {
-  const response = await axios.get(`${BASE_URL}/notes/${id}`);
-  return response.data;
+  return res.data;
 }
