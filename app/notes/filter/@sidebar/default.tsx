@@ -1,3 +1,5 @@
+import SidebarNotes from "./page";
+
 export default function Default() {
-  return <div>Loading...</div>;
+  return <SidebarNotes />;
 }

@@ -1,19 +1,21 @@
-type Props = {
+import React from "react";
+
+interface FilterLayoutProps {
   children: React.ReactNode;
   sidebar: React.ReactNode;
-  modal: React.ReactNode;
-};
+  notes: React.ReactNode;
+}
 
-export default function NotesLayout({
+export default function FilterLayout({
   children,
   sidebar,
-  modal,
-}: Props) {
+  notes,
+}: FilterLayoutProps) {
   return (
-    <div style={{ display: "flex", gap: "20px" }}>
-      <aside>{sidebar}</aside>
-      <main>{children}</main>
-      {modal}
+    <div style={{ display: "flex" }}>
+      {children}
+      {sidebar}
+      {notes}
     </div>
   );
 }
