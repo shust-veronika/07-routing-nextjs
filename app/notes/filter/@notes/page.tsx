@@ -1,4 +1,4 @@
-import { fetchNotes } from "@/lib/api/notes";
+import { fetchNotes } from "@/lib/api";
 import css from "./NotesPage.module.css";
 
 export const dynamic = 'force-dynamic';

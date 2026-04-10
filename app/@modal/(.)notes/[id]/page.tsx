@@ -1,5 +1,5 @@
-import { fetchNoteById } from "@/lib/api/notes";
-import NoteDetails from "@/components/NoteDetails/NoteDetails";
+import { fetchNoteById } from "@/lib/api";
+import NoteDetails from "@/app/notes/[id]/NoteDetails";
 
 type Props = {
   params: { id: string };
