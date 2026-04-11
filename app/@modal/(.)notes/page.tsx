@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default async function NoteModal({ params }: Props) {
-
+  
   return (
     <Modal>
       <NotePreview id={params.id} />

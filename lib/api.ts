@@ -3,9 +3,7 @@ import { Note } from "@/types/note";
 
 interface NotesResponse {
   notes: Note[];
-  total: number;
-  page: number;
-  pages: number;
+  totalPages: number;
 }
 
 const BASE_URL = "https://notehub-public.goit.study/api";
@@ -13,7 +11,6 @@ const BASE_URL = "https://notehub-public.goit.study/api";
 const instance = axios.create({
   baseURL: BASE_URL,
 });
-
 
 instance.interceptors.request.use((config) => {
   const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
@@ -23,8 +20,12 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
-export async function createNote(data: { title: string; content: string }) {
-  const res = await instance.post("/notes", data);
+export async function createNote(data: { 
+  title: string; 
+  content: string; 
+  tag: string 
+}): Promise<Note> {
+  const res = await instance.post<Note>("/notes", data);
   return res.data;
 }
 
@@ -45,5 +46,10 @@ export async function fetchNotes(
 
 export async function fetchNoteById(id: string): Promise<Note> {
   const res = await instance.get<Note>(`/notes/${id}`);
+  return res.data;
+}
+
+export async function deleteNote(id: string): Promise<Note> {
+  const res = await instance.delete<Note>(`/notes/${id}`);
   return res.data;
 }

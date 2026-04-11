@@ -4,7 +4,9 @@ const CATEGORIES = [
   { id: "all", name: "All Notes", slug: "all" },
   { id: "work", name: "Work", slug: "work" },
   { id: "personal", name: "Personal", slug: "personal" },
-  { id: "important", name: "Important", slug: "important" },
+  { id: "todo", name: "Todo", slug: "todo" },
+  { id: "meeting", name: "Meeting", slug: "meeting" },
+  { id: "shopping", name: "Shopping", slug: "shopping" },
 ];
 
 export default function Default() {
