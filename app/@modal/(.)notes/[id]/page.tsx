@@ -5,13 +5,14 @@ import {
 } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api";
 import NoteDetails from "@/app/notes/[id]/NoteDetails.client";
+import { Note } from "@/types/note";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 export default async function NoteModalPage({ params }: Props) {
-  const { id } = await params;
+  const { id } = params;
 
   const queryClient = new QueryClient();
 
@@ -20,11 +21,15 @@ export default async function NoteModalPage({ params }: Props) {
     queryFn: () => fetchNoteById(id),
   });
 
-  return (
+  const note = queryClient.getQueryData<Note>(["note", id]);
 
+  if (!note) {
+    return <div>Note not found</div>;
+  }
+
+  return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      {}
-      <NoteDetails id={id} />
+      <NoteDetails note={note} />
     </HydrationBoundary>
   );
 }
