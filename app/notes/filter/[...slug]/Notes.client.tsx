@@ -8,9 +8,13 @@ import NoteList from '@/components/NoteList/NoteList';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Modal from '@/components/Modal/Modal'; 
-import Pagination from '@/components/Pagination/Pagination'; 
+import Pagination from '@/components/Pagination/Pagination';
 
-export default function NotesClient() {
+interface NotesClientProps {
+  tag?: string;
+}
+
+export default function NotesClient({ tag }: NotesClientProps) {
   const [search, setSearch] = useState<string>('');
   const [page, setPage] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -18,8 +22,8 @@ export default function NotesClient() {
   const [debouncedSearch] = useDebounce(search, 500);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['notes', page, debouncedSearch], 
-    queryFn: () => fetchNotes(page, debouncedSearch),
+    queryKey: ['notes', tag, page, debouncedSearch], 
+    queryFn: () => fetchNotes(tag, debouncedSearch, page),
     placeholderData: keepPreviousData, 
   });
 
@@ -50,11 +54,11 @@ export default function NotesClient() {
         <p>Error loading notes.</p>
       ) : (
         <>
+          {}
           <NoteList notes={data?.notes || []} />
           
-          {}
           <Pagination 
-            pageCount={data?.totalPages || 0}
+            pageCount={data?.pages || 0}
             currentPage={page}
             onPageChange={handlePageClick}
           />
