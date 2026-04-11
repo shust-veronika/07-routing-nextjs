@@ -13,7 +13,8 @@ export default async function NotesPage({ params }: NotesPageProps) {
   const { tag } = await params;
   const filterTag = tag?.[0] === "all" ? undefined : tag?.[0];
 
-  const notes = await fetchNotes(filterTag);
+  const response = await fetchNotes(filterTag);
+  const notes = response.notes;
 
   return (
     <div className={css.container}>
