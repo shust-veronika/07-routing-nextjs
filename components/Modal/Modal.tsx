@@ -3,19 +3,18 @@
 import { useRouter } from "next/navigation";
 import css from "./Modal.module.css";
 
-export default function Modal({
-  children,
-}: {
+interface ModalProps {
   children: React.ReactNode;
-}) {
+  onClose?: () => void; 
+}
+
+export default function Modal({ children, onClose }: ModalProps) {
   const router = useRouter();
+  const handleDismiss = onClose || (() => router.back());
 
   return (
-    <div className={css.overlay} onClick={() => router.back()}>
-      <div
-        className={css.modal}
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className={css.overlay} onClick={handleDismiss}>
+      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>
