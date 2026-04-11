@@ -23,6 +23,10 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
+export async function createNote(data: { title: string; content: string }) {
+  const res = await instance.post("/notes", data);
+  return res.data;
+}
 
 export async function fetchNotes(
   tag?: string,
