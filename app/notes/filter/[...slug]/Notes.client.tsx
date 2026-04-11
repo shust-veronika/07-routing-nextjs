@@ -58,7 +58,7 @@ export default function NotesClient({ tag }: NotesClientProps) {
           <NoteList notes={data?.notes || []} />
           
           <Pagination 
-            pageCount={data?.pages || 0}
+            totalPages={data?.pages || 0}
             currentPage={page}
             onPageChange={handlePageClick}
           />
