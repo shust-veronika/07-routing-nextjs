@@ -44,11 +44,9 @@ export default function NotePreview({ id }: NotePreviewProps) {
               </button>
               <h2 style={{ margin: 0 }}>{note.title}</h2>
               <div style={{ display: 'flex', gap: '10px', marginTop: '5px' }}>
-                {}
                 <span style={{ backgroundColor: '#eee', padding: '2px 8px', borderRadius: '4px' }}>
                   #{note.tag}
                 </span>
-                {}
                 <time style={{ color: '#666' }}>
                   {new Date(note.createdAt).toLocaleDateString()}
                 </time>
