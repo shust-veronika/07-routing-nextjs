@@ -7,11 +7,10 @@ type Props = {
 };
 
 export default async function NoteModal({ params }: Props) {
-  const note = await fetchNoteById(params.id);
 
   return (
     <Modal>
-      <NotePreview note={note} />
+      <NotePreview id={params.id} />
     </Modal>
   );
 }
