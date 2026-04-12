@@ -25,7 +25,7 @@ export default async function NoteModalPage({ params }: Props) {
       {/* Виправлено: компонент більше не отримує note через пропс.
         Він візьме дані з кешу React Query завдяки HydrationBoundary.
       */}
-      <NoteDetails note={note} />
+      <NoteDetails />
     </HydrationBoundary>
   );
 }
