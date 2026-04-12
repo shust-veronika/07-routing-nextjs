@@ -24,7 +24,11 @@ export default function NoteForm({ onSuccess }: NoteFormProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (newNote: NewNote) => createNote(newNote),
+    mutationFn: (newNote: NewNote) =>
+  createNote({
+    ...newNote,
+    tag: newNote.tag || '',
+  }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
       onSuccess?.();
