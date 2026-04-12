@@ -6,6 +6,7 @@ type Props = {
   params: { id: string };
 };
 
+
 export default async function NoteModal({ params }: Props) {
   
   return (
